@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dr. Fernando E. Ciraci - Abogado</title>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Montserrat&display=swap');
+
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+            padding-top: 90px; /* Aumento del padding para compensar la barra más alta */
+        }
+
+        nav {
+            background-color: #2c2c54;
+            color: white;
+            padding: 1rem 1rem; /* Aumenté el padding vertical para hacerla más ancha */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 70px; /* Asegura una altura mínima para contener el logo más grande */
+        }
+
+        .logo-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Estilos para el logo imagen */
+        .logo-nav img {
+            max-height: 60px; /* Aumenté la altura máxima del logo */
+            margin-right: 0.7rem; /* Espacio entre el logo y el texto/menú */
+        }
+
+        .logo-name-nav {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Oculta el logo anterior */
+        .logo-circle-nav {
+            display: none;
+        }
+
+        nav h1 {
+            display: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem; /* Aumenté el espacio entre los elementos del menú */
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem; /* Ligeramente más grande la fuente del menú si quieres */
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.8rem; /* Un poco más grande el icono del menú móvil */
+            cursor: pointer;
+            color: white;
+        }
+
+        section {
+            padding: 4rem 1rem 1rem;
+            max-width: 95%;
+            margin: auto;
+            padding-top: calc(4rem + 90px); /* Ajuste para la nueva altura de la navegación */
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #2c2c54;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.3rem;
+        }
+
+        .card {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        #inicio {
+            background-image: url('balanza.avif');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 1rem; /* Aumenté el padding vertical para más espacio */
+            display: flex;
+            align-items: center;
+            position: relative;
+            text-align: left;
+            min-height: 350px;
+        }
+
+        #inicio-content {
+            max-width: 70%; /* Un poco más de ancho para el contenido inicial */
+            padding: 20px;
+        }
+
+        #inicio h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        #inicio p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input, form textarea {
+            padding: 0.7rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        form button {
+            background-color: #2c2c54;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        form button:hover {
+            background-color: #1e1e3d;
+        }
+
+        footer {
+            background-color: #2c2c54;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        section[id] {
+            scroll-margin-top: calc(90px + 60px); /* Ajuste para la nueva altura de la navegación */
+        }
+
+        .map-container {
+            width: 100%;
+            height: 550px; /* Un poco más alto el mapa si quieres */
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            text-decoration: none;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128c7e;
+        }
+
+        /* Estilos para móviles y la X */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px; /* Ajuste para la navegación móvil más alta */
+            }
+
+            nav {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.6rem 1rem; /* Aumenté el padding vertical en móvil */
+                min-height: auto; /* Permite que la altura se ajuste al contenido */
+            }
+
+            .logo-nav img {
+                max-height: 50px; /* Ajusté la altura máxima del logo en móvil */
+                margin-right: 0.5rem;
+            }
+
+            .logo-name-nav {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 0.8rem;
+                padding-top: 1rem;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #2c2c54;
+                text-align: center;
+                z-index: 998;
+            }
+
+            nav ul.open {
+                display: flex;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 0.8rem 0;
+                font-size: 1rem;
+            }
+
+            .nav-toggle {
+                display: block;
+                font-size: 2rem; /* Más grande el icono en móvil */
+                color: white;
+            }
+
+            section {
+                padding-top: calc(4rem + 70px); /* Ajuste para la navegación móvil */
+            }
+
+            section[id] {
+                scroll-margin-top: calc(70px + 50px); /* Ajuste para la navegación móvil */
+            }
+
+            #inicio {
+                padding: 10rem 1rem; /* Más padding en inicio en móvil */
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                min-height: 400px;
+            }
+
+            #inicio-content {
+                max-width: 95%;
+                padding: 25px;
+            }
+
+            #inicio h2 {
+                font-size: 2.2rem;
+                margin-bottom: 0.7rem;
+            }
+
+            #inicio p {
+                font-size: 1.2rem;
+                line-height: 1.6;
+            }
+
+            .card {
+                padding: 2.5rem;
+            }
+
+            footer {
+                font-size: 1rem;
+                padding: 1.2rem;
+            }
+
+            .whatsapp-button {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+
+            .whatsapp-button img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .map-container {
+                height: 350px;
+            }
+        }
+
+        /* Estilos para la sección de áreas (tarjetas) */
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Tarjetas un poco más anchas */
+            gap: 2rem; /* Más espacio entre tarjetas */
+            margin-top: 1.5rem;
+        }
+
+        .area-card {
+            background-color: white;
+            padding: 2rem; /* Más padding dentro de las tarjetas */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .area-card h3 {
+            color: #2c2c54;
+            margin-bottom: 0.7rem;
+            font-size: 1.2rem;
+        }
+
+        .area-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .areas-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .trayectoria-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1.5rem;
+        }
+
+        .trayectoria-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .trayectoria-list li span {
+            position: absolute;
+            left: 0;
+            top: 0.2rem; /* Ajuste vertical */
+            color: #2c2c54;
+            font-weight: bold;
+        }
+        .contacto-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contacto-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .whatsapp-button-link {
+            background-color: #25d366;
+        }
+
+        .whatsapp-button-link:hover {
+            background-color: #128c7e;
+        }
+
+        .email-button {
+            background-color: #007bff; /* Un azul similar al de email */
+        }
+
+        .email-button:hover {
+            background-color: #0056b3;
+        }
+
+        .contacto-options form {
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-nav">
+            <img src="logo.png" alt="Logo Dr. Fernando E. Ciraci" />
+            <span class="logo-name-nav">Dr. Fernando E. Ciraci</span>
+        </div>
+        <span class="nav-toggle">✖</span>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li><a href="#trayectoria">Trayectoria</a></li>
+            <li><a href="#areas">Áreas</a></li>
+            <li><a href="#ubicacion">Ubicación</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="inicio">
+        <div id="inicio-content">
+            <h2>Tu Defensa Legal con Experiencia y Compromiso</h2>
+            <p>Más de 10 años brindando soluciones efectivas en Derecho Laboral, Civil, Familia, Comercial y Penal en Buenos Aires y Provincia. <strong>¿Necesitas asesoramiento legal? Contáctame hoy.</strong></p>
+        </div>
+    </section>
+
+    <section id="sobre-mi">
+        <div class="card">
+            <h2 class="section-title">Sobre mí</h2>
+            <p>Soy Fernando Elian Ciraci, abogado con más de 10 años de ejercicio profesional en la Ciudad Autónoma de Buenos Aires y con experiencia también en la provincia desde hace más de un año. Cuento con amplia trayectoria en las áreas de Derecho Laboral, Civil, de Familia, Comercial y Penal. Mi compromiso es brindar a cada cliente soluciones legales eficaces, con un trato personalizado, basado en el compromiso, la ética y la responsabilidad.
+        </p>
+    </div>
+</section>
+
+<section id="trayectoria">
+    <div class="card">
+        <h2 class="section-title">Mi Compromiso Profesional</h2>
+        <p>Mi objetivo es simple: ofrecerte soluciones legales integrales con un enfoque humano y personalizado. Creo firmemente en la importancia de la ética, la transparencia y la dedicación en cada caso que asumo.</p>
+        <ul class="trayectoria-list">
+            <li><span>✓</span> Amplia experiencia en Derecho Laboral, Civil, de Familia, Comercial y Penal.</li>
+            <li><span>✓</span> Enfoque personalizado: cada caso es único y merece una solución a medida.</li>
+            <li><span>✓</span> Enfoque personalizado: cada caso es único y merece una solución a medida.</li>
+            <li><span>✓</span> Compromiso y transparencia: mi prioridad es brindarte tranquilidad y soluciones efectivas.</li>
+            <li><span>✓</span> Dedicación y profesionalismo en cada instancia legal.</li>
+        </ul>
+    </div>
+</section>
+
+<section id="areas">
+    <h2 class="section-title">Áreas de práctica</h2>
+    <div class="
+    areas-grid">
+        <div class="area-card">
+            <h3>Derecho Laboral</h3>
+            <p>Asesoramiento, Seclo, litigios, accidentes...</p>
+        </div>
+        <div class="area-card">
+            <h3>Derecho Civil</h3>
+            <p>Desalojos, escrituraciones, daños, contratos...</p>
+        </div>
+        <div class="area-card">
+            <h3>Derecho de Familia</h3>
+            <p>Sucesiones, divorcios, alimentos, filiación...</p>
+        </div>
+        <div class="area-card">
+            <h3>Derecho Comercial</h3>
+            <p>Sociedades, contratos, recupero de deudas...</p>
+        </div>
+        <div class="area-card">
+            <h3>Derecho Penal</h3>
+            <p>Defensa, excarcelaciones, violencia familiar...</p>
+        </div>
+        <div class="area-card">
+            <h3>Asesoría Legal Online</h3>
+            <p>Consultas y asesoramiento a distancia.</p>
+        </div>
+        <div class="area-card">
+            <h3>Representación Judicial</h3>
+            <p>Patrocinio en juicios en todas las instancias.</p>
+        </div>
+    </div>
+</section>
+
+<section id="ubicacion">
+    <div class="card">
+        <h2 class="section-title">¿Dónde trabajamos?</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.994911819733!2d-58.38895522445828!3d-34.604290172954094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac42e667239%3A0x50213de9dd7345ba!2sUruguay%20385%2C%20C1015ABG%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1747298271598!5m2!1ses-419!2sar"
+                            width="100%"
+                            height="500"
+                            style="border:0;"
+                            allowfullscreen="fullscreen"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <p>Atendemos casos en todo el ámbito de la Ciudad Autónoma de Buenos Aires y el Gran Buenos Aires. También brindamos asesoramiento legal <strong>online</strong> para personas de todo el país.</p>
+        <p>Nuestro estudio jurídico está ubicado en Uruguay 385, CABA. Atendemos con turnos programados para garantizar una atención personalizada y sin esperas.</p>
+        <p>Consultas presenciales y virtuales disponibles de lunes a viernes.</p>
+        <p><strong>¿Necesitas coordinar una consulta? ¡Contáctame!</strong></p>
+    </div>
+</section>
+
+<section id="contacto">
+    <h2 class="section-title">Contacto</h2>
+    <div class="card contacto-options">
+        <p>¿Cómo prefieres contactarnos?</p>
+        <div class="contacto-buttons">
+            <a href="https://wa.me/541127681151" class="button whatsapp-button-link" target="_blank">Contactar por WhatsApp</a>
+            <a href="mailto:[tu_email@ejemplo.com]" class="button email-button">Enviar un Email</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Dr. Fernando E. Ciraci - Abogado. Todos los derechos reservados.</p>
+</footer>
+
+<a href="https://wa.me/541127681151" class="whatsapp-button" target="_blank">
+    <img src="whatsapp.png" alt="WhatsApp" style="width: 24px; height: 24px;">
+</a>
+
+<script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navUl = document.querySelector('nav ul');
+
+    navToggle.addEventListener('click', () => {
+        navUl.classList.toggle('open');
+    });
+</script>
+
+</body>
+</html>
